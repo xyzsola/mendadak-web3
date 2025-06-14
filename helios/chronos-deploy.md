@@ -7,6 +7,8 @@ Cara kerjanya adalah ketika pertama kali deploy schedule task ini, akan otomatis
   
 Selain dibuatkan Cron Wallet, kita juga harus deposit sejumlah HLS (Helios Test Token) agar bisa dipakai sebagai gas fee ketika task akan dijalankan secara otomatis nanti.
 
+> pastikan sudah bikin deploy GM dulu. [Check ini!]()
+
 ----
 ### Cara Deploy-nya
 Karena akan menggunakan sedikit koding Nodejs, maka perlu bikin folder dengan struktur seperti ini:
@@ -53,7 +55,7 @@ const fs = require("fs");
 const path = require("path");
 const hre = require("hardhat");
 const cronABI = require("../abi/chronos.json"); 
-const targetABI = require("../artifacts/contracts/Contract.sol/Contract.json");
+const targetABI = require("../artifacts/contracts/GmContract.sol/GmContract.json");
 
 dotenv.config();
 
@@ -125,7 +127,7 @@ Buka file **package.json** lalu isi dengan
   "name": "helios-deployer",
   "version": "1.0.0",
   "description": "Deploy smart contract ke Helios EVM",
-  "main": "scripts/dailyDeploy.js",
+  "main": "scripts/deployCron.js",
   "scripts": {
     "deploy:cron": "npx hardhat run --network heliosTestnet scripts/deployCron.js"
   },
