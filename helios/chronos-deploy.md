@@ -7,7 +7,7 @@ Cara kerjanya adalah ketika pertama kali deploy schedule task ini, akan otomatis
   
 Selain dibuatkan Cron Wallet, kita juga harus deposit sejumlah HLS (Helios Test Token) agar bisa dipakai sebagai gas fee ketika task akan dijalankan secara otomatis nanti.
 
-> pastikan sudah bikin deploy GM dulu. [Check ini!]()
+> pastikan sudah bikin deploy GM dulu. [Check ini!](https://github.com/xyzsola/mendadak-web3/blob/main/helios/deploy-simple-contract.md)
 
 ----
 ### Cara Deploy-nya
