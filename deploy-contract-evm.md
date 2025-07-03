@@ -50,6 +50,10 @@ contract MyContract {
     constructor(string memory _message) {
         message = _message;
     }
+
+    function updateMessage(string memory _newMessage) public {
+        message = _newMessage;
+    }
 }
 ```
 `pragma solidity ^0.8.20;` itu wajib ada ketika menulis contract, kenapa? karena kode tersebut akan memberitahu bahwa kita sedang pakai solidity versi tersebut. Maka compiler harus menyesuaikan dengan versi solidity-nya.
@@ -85,7 +89,7 @@ async function deployContract() {
 	
 	// mulai deploy contract dg pesan yg ingin dikirim
 	// ingat bahwa contract di atas dirancang utk menerima pesan dan diset ke variable 'message' di contract
-	const contract = await MyContract.deploy("gSAD everyone!");
+	const contract = await MyContract.deploy("GM everyone!");
 
 	// tunggu sampai deploy selesai
 	await contract.waitForDeployment();
@@ -110,6 +114,19 @@ npx hardhat run --network testDeploy deploy.js
 ```
 
 Perhatikan **testDeploy** di perintah tersebut. Itu adalah apa yang sudah kita set di **hardhat.config.js** sebelumnya
+
+## Interaksi dengan smart contract yang sudah di-Deploy
+Sekali di-deploy, kode smart contract kita sudah tidak bisa diubah. Hanya bisa kita update nilai di dalamnya. Misal, kita bisa mengupdate nilai dari `message`
+
+```javascript
+const contract = new ethers.Contract(
+  "CONTRACT_ADDRESS",
+  ["function updateMessage(string _newMessage) external"],
+  wallet
+);
+
+await contract.updateMessage("Malas ah!");
+```
 
 Gimana? gampang kan? ya kali susah.
 
